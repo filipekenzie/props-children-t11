@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import Profile from "./components/Profile";
+import Main from "./components/Main";
 
 function App() {
+  const people = [
+    { name: "Filipe", age: "29" },
+    { name: "Anna", age: "30", stack: ["JS", "React", "Node", "Postgres"] },
+    { name: "Pedro", age: "23", stack: ["Dotnet", "Angular"] },
+    { name: "Josh", age: "40", stack: ["Python", "Django", "React Native"] },
+    { name: "Kate", age: "25", stack: ["Java", "Spring Framework"] },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Main>
+      {people.map((person, index) => (
+        <Profile
+          key={index}
+          name={person.name}
+          age={person.age}
+          stack={person.stack}
+        />
+      ))}
+    </Main>
   );
 }
 
